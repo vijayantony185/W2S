@@ -6,6 +6,7 @@
         \n\n
         1. I am getting a place from the edittext shown in the top and convert it to latitude and longitude using Geocoder. After that i am placing a marker in that Location and directions button will be visible.\n\n
         2. I do not have directions enabled key so whenever i am passing the source and destinations location in directions api the result shows like REQUEST DENIED and does not draw poly line.\n\n
+        3. Once the Direction is enable and it draws the polyline.\n\n
         Thank You
     </string>
 </resources>
