@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MapsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Maps Activity"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        android:background="@color/toolbar_color"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <AutoCompleteTextView
+            android:id="@+id/deliverylocation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/search_background"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:hint="Location"
+            android:minLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <fragment
+            android:id="@+id/map_fragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/cv_address"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".Activity.AddressActivity.SelectAddressActivity" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/placeholder"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/map_fragment"
+            app:layout_constraintLeft_toLeftOf="@+id/map_fragment"
+            app:layout_constraintRight_toRightOf="@+id/map_fragment"
+            app:layout_constraintTop_toTopOf="@+id/map_fragment"
+            app:layout_constraintVertical_bias="0.3" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nested_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/location_round"
+                        android:visibility="gone"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_title_select_delivery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="LOCATION"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/img_location_pin"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="@id/city"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/city"
+                        app:srcCompat="@drawable/ic_location_on_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@android:color/transparent"
+                        android:backgroundTint="@color/edittext_bottom_line"
+                        android:enabled="false"
+                        android:hint="Enter Your City"
+                        android:padding="2dp"
+                        android:textColor="@drawable/edt_enabled"
+                        android:textColorHint="@color/hint_color"
+                        android:textCursorDrawable="@drawable/cursorcolor"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toRightOf="@id/img_location_pin"
+                        app:layout_constraintRight_toLeftOf="@id/change_address"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title_select_delivery" />
+
+                    <TextView
+                        android:id="@+id/change_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="4dp"
+                        android:text="Change"
+                        android:textColor="@color/purple_700"
+                        android:textSize="14dp"
+                        android:visibility="gone"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title_select_delivery" />
+
+                    <EditText
+                        android:id="@+id/tv_address_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@android:color/transparent"
+                        android:backgroundTint="@color/edittext_bottom_line"
+                        android:ellipsize="end"
+                        android:hint="Enter Your Address"
+                        android:maxLines="2"
+                        android:minLines="2"
+                        android:padding="2dp"
+                        android:textColor="@color/address_text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:textCursorDrawable="@drawable/cursorcolor"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toTopOf="@id/lay_next"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/img_location_pin" />
+
+                    <LinearLayout
+                        android:id="@+id/lay_address_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tv_address_details">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/checkbox_home"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:gravity="center" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:text="Home" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/checkbox_office"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:gravity="center" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:text="Office" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="start|center"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/checkbox_others"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:gravity="center" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:text="Others" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_title_flat_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:paddingLeft="4dp"
+                        android:text="Flat No / Building Name"
+                        android:textColor="@color/title_color"
+                        android:textSize="12dp"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_address_details" />
+
+                    <EditText
+                        android:id="@+id/edt_flat_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/edittext_bottom_line"
+                        android:hint="Flat No"
+                        android:textColor="@color/address_text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:textCursorDrawable="@drawable/cursorcolor"
+                        android:textSize="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title_flat_no" />
+
+                    <TextView
+                        android:id="@+id/tv_landmark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="4dp"
+                        android:text="Landmark"
+                        android:textColor="@color/title_color"
+                        android:textSize="12dp"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_flat_no" />
+
+                    <EditText
+                        android:id="@+id/edt_landmark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/edittext_bottom_line"
+                        android:hint="Land Mark"
+                        android:textColor="@color/address_text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:textCursorDrawable="@drawable/cursorcolor"
+                        android:textSize="15dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tv_landmark"
+                        tools:layout_editor_absoluteX="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/lay_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/bg_confirm_location"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lay_address_type">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Direction"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
